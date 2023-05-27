@@ -20,7 +20,7 @@ public class MainOracle {
 			
 			
 //TO DO 
-			//Update url 
+			//Update url por la ip que corresponda
 			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			ods.setURL(url);
 			ods.setUser("people_user");
