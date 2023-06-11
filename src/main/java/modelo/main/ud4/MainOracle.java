@@ -5,7 +5,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import modelo.OracleDepartamento;
+import modelo.OracleProject;
 import oracle.jdbc.OracleResultSet;
 import oracle.jdbc.datasource.impl.OracleDataSource;
 
@@ -21,7 +21,7 @@ public class MainOracle {
 			
 //TO DO 
 			//Update url por la ip que corresponda
-			String url = "jdbc:oracle:thin:@192.168.56.1:1521/xepdb1";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			ods.setURL(url);
 			ods.setUser("people_user");
 			ods.setPassword("abc123.");
@@ -35,16 +35,16 @@ public class MainOracle {
 
 //TO DO
 			//Crear el select que permite obtener todos los objetos de la tabla dept_table
-			PreparedStatement stmt = conn.prepareStatement("SELECT VALUE(D) FROM DEPT_TABLE D");
+			PreparedStatement stmt = conn.prepareStatement("SELECT VALUE(D) FROM PROJECT_TABLE D");
 			OracleResultSet rs = (OracleResultSet) stmt.executeQuery();
 			while (rs.next()) {		
 
 
 				
-				Object s = rs.getObject(1, OracleDepartamento.getOracleDataFactory());
+				Object s = rs.getObject(1, OracleProject.getOracleDataFactory());
 
 				if (s != null) {
-					if (s instanceof OracleDepartamento) {						
+					if (s instanceof OracleProject) {						
 						System.out.println(s);
 					}
 
